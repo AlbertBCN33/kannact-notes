@@ -10,6 +10,17 @@ The app can be accessed using this url: [https://kannact-notes.web.app/notes](ht
 
 The app uses the Cloud Firestore database to store the created notes., which is a NoSQL cloud database. For more information visit: [Cloud Firestore Database](https://firebase.google.com/docs/firestore)
 
+## Run it locally
+
+In order to run this project locally you will need:
+* **node**: v16.14.0
+* **npm**: v8.3.1
+* **@angular/cli**: v13.0.0. You need to have it installed globally, to do so run the following command: `npm i -g @angular/cli@13.0.0`.
+
+Then run the following commands:
+* Install project dependencies: `npm i`
+* Run the project: `ng serve`
+
 ## Usage
 
 #### Language
