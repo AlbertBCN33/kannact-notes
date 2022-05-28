@@ -1,0 +1,16 @@
+<!-- Spinner -->
+<p-blockUI [blocked]="pageLayoutService.spinner">
+    <i class="pi pi-spin pi-spinner"></i>
+</p-blockUI>
+
+<div class="layout-wrapper">
+    <!-- Side menu (left) -->
+    <div class="layout-side-menu">
+        <app-side-menu></app-side-menu>
+    </div>
+    <!-- Main content (right) -->
+    <div class="layout-main">
+        <k-page-title [label]="pageLayoutService.pageTitle"></k-page-title>
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<p-panel 
+    [header]="label | translate"
+    [toggleable]="toggleable"
+    expandIcon="pi pi-chevron-up"
+    collapseIcon="pi pi-chevron-down"
+    styleClass="{{!showBackground ? 'no-background' : null}}">
+    
+    <ng-content></ng-content>
+</p-panel>

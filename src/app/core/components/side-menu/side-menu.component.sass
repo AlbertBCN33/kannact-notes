@@ -1,0 +1,78 @@
+.side-menu
+    // background-color: #6d2a6c33
+    height: 100%
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 16%)
+    display: flex
+    flex-direction: column
+
+    .menu-logo
+        padding: 20px 10px
+
+        img
+            height: auto
+            max-width: 100%
+
+        .menu-moto
+            margin: 0px 10px
+            font-size: 14px
+            color: #622469
+            text-align: center
+
+    .menu-list
+        list-style: none
+        padding: 0
+        margin: 0
+        flex: 1
+        
+        li
+            position: relative
+            
+            a
+                margin: 0px 20px
+                padding: 15px 0px
+                font-size: 24px
+                text-decoration: none
+                font-weight: 600
+                color: #7d367b
+                display: block
+                border-bottom: 1px solid #6d2a6c33
+
+                &:hover, &:focus, &:active, &.active
+                    text-decoration: none
+                    // font-weight: bold
+                    // color: #7d367b
+                    color: #622469
+
+                    &::after
+                        position: absolute
+                        right: 0
+                        top: 0
+                        width: 3px
+                        height: 100%
+                        content: ""
+                        background-color: #622469
+
+    // Language switch
+    ::ng-deep .language-switch
+        text-align: center
+        padding: 20px 10px
+
+        .p-selectbutton 
+            .p-button
+                border: none
+                background-color: transparent
+                color: #7d367b
+                font-weight: 400
+
+                &:focus
+                    box-shadow: none
+
+                &:not(:last-child)
+                    border-right: 1px solid #7d367b
+                    border-top-right-radius: 0px
+                    border-bottom-right-radius: 0px
+                    
+                &.p-highlight
+                    background-color: transparent
+                    color: #622469
+                    font-weight: 600

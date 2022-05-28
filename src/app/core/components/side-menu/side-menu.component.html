@@ -1,0 +1,28 @@
+<div class="side-menu">
+    <div class="menu-logo">
+        <a routerLink="/">
+            <img src="assets/img/kannactlogo.png" />
+        </a>
+        <h5 class="menu-moto">{{'COMMON.COMPANY_MOTO' | translate}}</h5>
+    </div>
+    <ul class="menu-list">
+        <li *ngFor="let item of menu">
+            <a
+                [routerLink]="item.routerLink" 
+                routerLinkActive="active" >
+                {{item.label | translate}}
+            </a>
+        </li>
+    </ul>
+    <div class="language-switch">
+        <form [formGroup]="componentForm">
+            <p-selectButton 
+                [options]="languages" 
+                formControlName="language"
+                optionLabel="label" 
+                optionValue="id"
+                (onChange)="languageChanged()">
+            </p-selectButton>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+::ng-deep .p-panel
+    margin-bottom: 30px
+
+    &.no-background
+        &.p-panel-toggleable .p-panel-header,
+        .p-panel-header
+            border-bottom: none
+
+        &.p-panel-toggleable .p-panel-content,
+        .p-panel-content
+            background: transparent
+            border: none
+            padding: 0
+            box-shadow: none
+
+    &.p-panel-toggleable .p-panel-header,
+    .p-panel-header
+        background-color: transparent
+        color: #7d367b
+        // border-top: none
+        // border-right: none
+        // border-bottom: 1px solid #dee2e6
+        // border-left: none
+        border: none
+        font-size: 20px
+        padding-left: 0
+        padding-right: 0
+
+        .p-panel-header-icon
+            color: #7d367b
+
+            &:hover, &:focus
+                box-shadow: none
+                color: #622469
+                background-color: #e2d4e2
+
+    .p-toggleable-content[aria-hidden="false"]
+        border-bottom: none
+    .p-toggleable-content[aria-hidden="true"]
+        border-bottom: 1px solid #dee2e6
+
+    .p-panel-content
+        box-shadow: 0 2px 8px 0 rgb(0 0 0 / 8%)
+
+        .panel-no-data
+            font-weight: 600
+            font-size: 18px

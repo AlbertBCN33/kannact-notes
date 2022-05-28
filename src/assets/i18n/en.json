@@ -1,0 +1,46 @@
+{
+	"COMMON": {
+		"COMPANY_NAME": "Kannact",
+		"COMPANY_MOTO": "Human driven digital health",
+		"COMPAN_APP": "Notes",
+		"LANGUAGES": {
+			"en": "ENG",
+			"es": "ES"
+		}
+	},
+	"MODULE_NOTES": {
+		"PAGE_TITLE": "Notes",
+		"MENU_TITLE": "Notes",
+		"SECTION_NOTE": {
+			"SECTION_TITLE": "New note",
+			"BTN_NEW": "Post note",
+			"BTN_FLAG": "Flag note",
+			"BTN_FLAGGED": "Note flagged",
+			"FIELDS": {
+				"note_placeholder": "Write a note"
+			}
+		},
+		"SECTION_NOTES": {
+			"SECTION_TITLE": "Notes list",
+			"NO_DATA": "There are no available notes.",
+			"FILTERS": {
+				"FILTER_BY": "Filter by: ",
+				"creationDate": "Creation date",
+				"updatedDate": "Last updated",
+				"BTN_SEARCH": "Search",
+				"BTN_SEARCH_PLACEHOLDER": "Search notes (at least 3 characters)"
+			},
+			"FIELDS": {
+				"coachFullname": "Coach: {{coachFullname}}",
+				"creationDate": "Creation date: {{creationDate}}",
+				"updatedDate": "Last updated: {{updatedDate}}",
+				"BTN_UPDATE": "Update note",
+				"BTN_CANCEL": "Cancel"
+			}
+		}
+	},
+	"MODULE_DUMMY": {
+		"PAGE_TITLE": "Dummy",
+		"MENU_TITLE": "Dummy"
+	}
+}

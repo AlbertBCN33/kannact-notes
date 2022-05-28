@@ -1,0 +1,88 @@
+/* FILTERS */
+.filters-container
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 20px     
+
+    .filter-text
+        margin-right: 15px
+
+    .search-container
+        margin-left: auto
+        min-width: 50%
+
+        .p-input-icon-right
+            width: 100%
+            .p-inputtext
+                width: 100%
+
+        .search-icon
+            color: #883cae
+
+            &.pi-times
+                cursor: pointer
+
+
+/* Action buttons */
+.action-buttons
+    margin-top: 20px
+
+    &.right
+        text-align: right
+
+    button:not(:last-child)
+        margin-right: 10px
+
+/* NOTES */    
+.note-container
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 8%)
+    background-color: #ffffff
+    padding: 15px
+    border-left: 3px solid transparent
+
+    &.is-flagged
+        border-left-color: #622469
+
+    &:not(:last-child)
+        margin-bottom: 15px
+
+    .note-info-container
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 10px
+
+        .note-coach
+            font-weight: 600
+            font-size: 16px
+
+        .note-actions
+            button:not(:last-child)
+                margin-right: 10px
+                    
+
+    .note-dates
+        .note-date
+            color: #808080
+            font-size: 12px
+            font-weight: 400
+            position: relative
+            padding: 0px 10px
+
+            &:first-child
+                padding-left: 0
+
+            &:not(:last-child)::after
+                position: absolute
+                content: ""
+                width: 1px
+                height: 100%
+                right: 0
+                top: 0
+                background-color: #808080
+
+    .note
+        font-weight: 400
+        font-size: 14px
+                

@@ -1,0 +1,46 @@
+{
+	"COMMON": {
+		"COMPANY_NAME": "Kannact",
+		"COMPANY_MOTO": "Salud digital impulsada por personas",
+		"COMPAN_APP": "Notas",
+		"LANGUAGES": {
+			"en": "ENG",
+			"es": "ES"
+		}
+	},
+	"MODULE_NOTES": {
+		"PAGE_TITLE": "Notas",
+		"MENU_TITLE": "Notas",
+		"SECTION_NOTE": {
+			"SECTION_TITLE": "Nueva nota",
+			"BTN_NEW": "Publicar nota",
+			"BTN_FLAG": "Marcar nota",
+			"BTN_FLAGGED": "Nota marcada",
+			"FIELDS": {
+				"note_placeholder": "Escribir una nota"
+			}
+		},
+		"SECTION_NOTES": {
+			"SECTION_TITLE": "Listado de notas",
+			"NO_DATA": "No hay notas disponibles.",
+			"FILTERS": {
+				"FILTER_BY": "Filtrar por: ",
+				"creationDate": "Fecha de creación",
+				"updatedDate": "Última actualización",
+				"BTN_SEARCH": "Buscar",
+				"BTN_SEARCH_PLACEHOLDER": "Buscar notas (al menos 3 caracteres)"
+			},
+			"FIELDS": {
+				"coachFullname": "Médico: {{coachFullname}}",
+				"creationDate": "Fecha de creación: {{creationDate}}",
+				"updatedDate": "Última actualización: {{updatedDate}}",
+				"BTN_UPDATE": "Actualizar nota",
+				"BTN_CANCEL": "Cancelar"
+			}
+		}
+	},
+	"MODULE_DUMMY": {
+		"PAGE_TITLE": "Dummy",
+		"MENU_TITLE": "Dummy"
+	}
+}

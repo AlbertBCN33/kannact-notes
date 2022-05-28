@@ -1,0 +1,185 @@
+<!--/* WRITE NEW NOTE */-->
+<k-panel label="MODULE_NOTES.SECTION_NOTE.SECTION_TITLE">
+
+    <!-- New note -->
+    <div class="post-note-container" [formGroup]="componentForm">
+        <p-editor 
+            [placeholder]="'MODULE_NOTES.SECTION_NOTE.FIELDS.note_placeholder' | translate"
+            formControlName="description" 
+            [style]="{'height':'200px'}">
+        </p-editor>
+    </div>
+
+    <!-- Note actions -->
+    <div class="action-buttons right">
+        <button 
+            type="button" 
+            pButton
+            icon="pi pi-flag"
+            class="p-button-help"
+            [ngClass]="{'p-button-outlined': !componentForm.get('isFlagged')?.value}"
+            [label]="componentForm.get('isFlagged')?.value ? ('MODULE_NOTES.SECTION_NOTE.BTN_FLAGGED' | translate): ('MODULE_NOTES.SECTION_NOTE.BTN_FLAG' | translate)"
+            (click)="componentForm.get('isFlagged')?.setValue(!componentForm.get('isFlagged')?.value)"
+            [disabled]="componentForm.invalid">
+        </button>
+        <button 
+            type="button" 
+            pButton
+            [label]="'MODULE_NOTES.SECTION_NOTE.BTN_NEW' | translate"
+            (click)="createNote()"
+            [disabled]="componentForm.invalid">
+        </button>
+    </div>
+</k-panel>
+
+<!--/* NOTES LIST */-->
+<k-panel 
+    label="MODULE_NOTES.SECTION_NOTES.SECTION_TITLE" 
+    [toggleable]="false"
+    [showBackground]="false">
+
+    <!-- Filters -->
+    <div class="filters-container">
+        <span class="filter-text">{{'MODULE_NOTES.SECTION_NOTES.FILTERS.FILTER_BY' | translate}}</span>
+
+        <!-- Filter by: creation date -->
+        <button 
+            type="button" 
+            pButton
+            icon="{{componentForm.get('filterCreationDate')?.value === SortTypes.DESC ? 'pi pi-arrow-down' : componentForm.get('filterCreationDate')?.value === SortTypes.ASC ? 'pi pi-arrow-up' : ''}}"
+            iconPos="right"
+            class="p-button-sm p-button-rounded"
+            [label]="'MODULE_NOTES.SECTION_NOTES.FILTERS.creationDate' | translate"
+            (click)="sortBy(true)">
+        </button>
+
+        <!-- Serach -->
+        <div class="search-container">
+            <span class="p-input-icon-right" [formGroup]="componentForm">
+                <i 
+                    class="pi search-icon"
+                    [ngClass]="{
+                        'pi-search': !componentForm.get('filterSearch')?.value,
+                        'pi-times': componentForm.get('filterSearch')?.value
+                    }"
+                    (click)="componentForm.get('filterSearch')?.value ? clearSearch() : null">
+                </i>
+                <input 
+                    type="text" 
+                    pInputText 
+                    formControlName="filterSearch"
+                    [placeholder]="'MODULE_NOTES.SECTION_NOTES.FILTERS.BTN_SEARCH_PLACEHOLDER' | translate">
+            </span>
+        </div>
+    </div>
+    
+    <!-- No data -->
+    <label *ngIf="!notesList || notesList.length === 0" class="panel-no-data">{{'MODULE_NOTES.SECTION_NOTES.NO_DATA' | translate}}</label>
+
+    <!-- Data -->
+    <ng-container *ngIf="notesList && notesList.length > 0">
+        <div 
+            *ngFor="let note of notesList | filterBy: componentForm.get('filterSearch')?.value | highlight: componentForm.get('filterSearch')?.value : ['coachFullname', 'description']"
+            class="note-container"
+            [ngClass]="{'is-flagged': note.isFlagged}">
+
+            <!-- 1st line information -->
+            <div class="note-info-container">
+                <div class="note-info">
+                    <!-- Coach name -->
+                    <span 
+                        *ngIf="note.coachFullname" 
+                        class="note-coach"
+                        [innerHTML]="'MODULE_NOTES.SECTION_NOTES.FIELDS.coachFullname' | translate: { coachFullname: note.coachFullname }">
+                    </span>
+    
+                    <!-- 2nd line information: dates -->
+                    <div class="note-dates">
+                        <!-- Creation date -->
+                        <span 
+                            *ngIf="note.creationDate" 
+                            class="note-date"
+                            translate="MODULE_NOTES.SECTION_NOTES.FIELDS.creationDate"
+                            [translateParams]="{ creationDate: (note.createdOn | date:'long') }">
+                        </span>
+    
+                        <!-- Last updated date -->
+                        <span 
+                            *ngIf="note.updatedDate" 
+                            class="note-date"
+                            translate="MODULE_NOTES.SECTION_NOTES.FIELDS.updatedDate"
+                            [translateParams]="{ updatedDate: (note.updatedOn | date:'long') }">
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Note actions -->
+                <div class="note-actions">
+                    <!-- Edit -->
+                    <button 
+                        pButton 
+                        type="button" 
+                        icon="pi pi-pencil" 
+                        class="p-button-rounded p-button-outlined p-button-sm p-button-info"
+                        (click)="note.readonly = !note.readonly"
+                        [disabled]="!note.readonly">
+                    </button>
+
+                    <!-- Delete -->
+                    <button 
+                        pButton 
+                        type="button" 
+                        icon="pi pi-trash" 
+                        class="p-button-rounded p-button-outlined p-button-sm p-button-danger"
+                        (click)="deleteNote(note)"
+                        [disabled]="!note.readonly">
+                    </button>
+
+                    <!-- Flag -->
+                    <button 
+                        pButton 
+                        type="button" 
+                        icon="pi pi-flag" 
+                        class="p-button-rounded p-button-sm p-button-help"
+                        [ngClass]="{'p-button-outlined': !note.isFlagged}"
+                        (click)="toggleFlag(note)"
+                        [disabled]="!note.readonly">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Note desscription -->
+            <div class="note-description">
+                <!-- Readonly -->
+                <p *ngIf="note.readonly" class="note" [innerHTML]="note.description"></p>
+
+                <!-- Editable -->
+                <p-editor
+                    *ngIf="!note.readonly"
+                    [placeholder]="'MODULE_NOTES.SECTION_NOTE.FIELDS.note_placeholder' | translate"
+                    [(ngModel)]="note.description" 
+                    [style]="{'height':'100px'}">
+                </p-editor>
+                <div *ngIf="!note.readonly" class="action-buttons right">
+                    <button 
+                        type="button" 
+                        pButton
+                        icon="pi pi-times"
+                        class="p-button-secondary"
+                        [label]="'MODULE_NOTES.SECTION_NOTES.FIELDS.BTN_CANCEL' | translate"
+                        (click)="note.readonly = !note.readonly">
+                    </button>
+                    <button 
+                        type="button" 
+                        pButton
+                        [label]="'MODULE_NOTES.SECTION_NOTES.FIELDS.BTN_UPDATE' | translate"
+                        (click)="updateNote(note)"
+                        [disabled]="!note.description">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </ng-container>
+
+</k-panel>
